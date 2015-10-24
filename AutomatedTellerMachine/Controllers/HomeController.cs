@@ -25,7 +25,15 @@ namespace AutomatedTellerMachine.Controllers
         //GET /home/contact
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.TheMessage = "having Trouble? Contact Us!";
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(string message)
+        {
+            //TODO : code message sending
+            ViewBag.TheMessage = "Thanks, we got your message";
 
             return View();
         }
