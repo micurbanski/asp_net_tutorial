@@ -10,10 +10,16 @@ namespace AutomatedTellerMachine.Models
     {
         public int Id { get; set; }
 
+        [Required]
+        [RegularExpression(@"\d{6,10}", ErrorMessage = "Account number needs to be between 6 - 10 characters")]
         [Display(Name="Account #")]
         public string AccountNumber { get; set; }
+
+        [Required]
         [Display(Name="First Name")]
         public string FirstName { get; set; }
+
+        [Required]
         [Display(Name="Last Name")]
         public string LastName { get; set; }
 
