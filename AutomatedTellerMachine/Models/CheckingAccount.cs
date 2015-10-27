@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,7 +12,9 @@ namespace AutomatedTellerMachine.Models
         public int Id { get; set; }
 
         [Required]
+        [StringLength(10)]
         [RegularExpression(@"\d{6,10}", ErrorMessage = "Account number needs to be between 6 - 10 characters")]
+        [Column(TypeName="varchar")]
         [Display(Name="Account #")]
         public string AccountNumber { get; set; }
 
@@ -32,5 +35,10 @@ namespace AutomatedTellerMachine.Models
         }
         [DataType(DataType.Currency)]
         public decimal Balance { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
+        [Required]
+        public string ApplicationUserId { get; set; }
     }
 }
