@@ -19,10 +19,13 @@ namespace AutomatedTellerMachine.Controllers
         // GET: CheckingAccount/Details
         public ActionResult Details()
         {
-            var checkingAccount = new CheckingAccount { AccountNumber = "00102312",
-                                                        FirstName = "Ja",
-                                                        LastName = "ja",
-                                                        Balance = 500};
+            var checkingAccount = new CheckingAccount
+            {
+                AccountNumber = "00102312",
+                FirstName = "Ja",
+                LastName = "ja",
+                Balance = 500
+            };
             return View(checkingAccount);
         }
 

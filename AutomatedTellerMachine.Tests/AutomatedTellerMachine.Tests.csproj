@@ -88,6 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Content\bootstrap.superhero.css" />
+    <Content Include="Content\bootstrap.superhero.min.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
