@@ -4,29 +4,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace AutomatedTellerMachine.Controllers
 {
+    [Authorize]
     public class CheckingAccountController : Controller
     {
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: CheckingAccount
         public ActionResult Index()
         {
             return View();
         }
 
-        // Working with in-memory dummy account
         // GET: CheckingAccount/Details
         public ActionResult Details()
         {
-            var checkingAccount = new CheckingAccount
-            {
-                AccountNumber = "00102312",
-                FirstName = "Ja",
-                LastName = "ja",
-                Balance = 500
-            };
+            var userId = User.Identity.GetUserId();
+            var checkingAccount = db.CheckingAccounts.Where(c => c.ApplicationUserId == userId).First();
             return View(checkingAccount);
+        }
+
+        //Get Details as Admin
+        // GET: CheckingAccount/Details
+        [Authorize(Roles="Admin")]
+        public ActionResult DetailsForAdmin(int id)
+        {
+            var checkingAccount = db.CheckingAccounts.Find(id);
+            return View("Details", checkingAccount);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult List()
+        {
+            return View(db.CheckingAccounts.ToList());
         }
 
         // GET: CheckingAccount/Create
