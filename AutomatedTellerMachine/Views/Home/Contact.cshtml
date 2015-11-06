@@ -18,9 +18,36 @@
 
 <div id="formSection">
     <h3>@ViewBag.TheMessage</h3>
-    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "fromSection" }))
+    <form method="post" id="contactForm">
+        <textarea name="message" id="message"></textarea><br />
+        <button type="submit" value="Send" class="btn btn-primary" id="progress">Send</button><br />
+    </form>
+</div>
+
+@section scripts {
+    <script>
+        $('#contactForm').submit(function () {
+            $('#progress').addClass( "m-progress" );
+            $.post('', { message: $('#message').val() })
+                .done(function (response) {
+                setTimeout(function () { $('#formSection').html(response); }, 2000);
+                });
+            return false;
+        });
+    </script>
+}
+
+
+@* First solution for partial view update
+    <div id="formSection">
+    <h3>@ViewBag.TheMessage</h3>
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "formSection" }))
     {
         <textarea name="message"></textarea><br />
         <input type="submit" value="save" class="btn btn-default" /> 
     }
 </div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}*@
