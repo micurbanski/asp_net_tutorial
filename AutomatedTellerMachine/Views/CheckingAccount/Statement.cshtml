@@ -14,10 +14,10 @@
             <td><strong>Amount</strong></td>
         </tr>
     </thead>
-    <tbody>
+    <tbody data-bind="foreach:currentTransactions">
         <tr>
-            <td></td>
-            <td></td>
+            <td data-bind="text:Id"></td>
+            <td data-bind="text:formattedPrice(Amount)"></td>
         </tr>
     </tbody>
     <tfoot>
@@ -25,7 +25,7 @@
             <td colspan="2">
                 <span data-bind="click:prevPage,visible:currentPage() > 1"
                       class="glyphicon glyphicon-circle-arrow-left" style="cursor:pointer;"></span>
-                @*show page number here*@
+                <strong><span data-bind="text:currentPage()"></span></strong>
                 <span data-bind="click:nextPage, visible:currentPage() < lastPage"
                       class="glyphicon glyphicon-circle-arrow-right" style="cursor:pointer;"></span>
             </td>
@@ -44,7 +44,7 @@
     function StatementViewModel() {
         var self = this;
         //properties
-        self.transactions = @Html.Raw(JsonConvert.SerializeObject(Model, new JsonSerializerSettings{ReferenceLoopHandling.Ignore}));
+        self.transactions = @Html.Raw(JsonConvert.SerializeObject(Model, new JsonSerializerSettings{ReferenceLoopHandling = ReferenceLoopHandling.Ignore}));
         self.pageSize = 5;
         self.currentPage = ko.observable(1);
         self.lastPage = Math.ceil(self.transactions.length / self.pageSize);
@@ -57,10 +57,10 @@
 
         //methods
         self.nextPage = function () {
-            self.currentPage(self.currentPage + 1);
+            self.currentPage(self.currentPage() + 1);
         };
         self.prevPage = function () {
-            self.currentPage(self.currentPage - 1);
+            self.currentPage(self.currentPage() - 1);
         };
     };
 
