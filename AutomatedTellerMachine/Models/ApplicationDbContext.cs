@@ -40,7 +40,7 @@ namespace AutomatedTellerMachine.Models
         public IDbSet<CheckingAccount> CheckingAccounts { get; set; }
         public IDbSet<Transaction> Transactions { get; set; }
 
-        public int SaveChanges()
+        int SaveChanges()
         {
             return 0;
         }
