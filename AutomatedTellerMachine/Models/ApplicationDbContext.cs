@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using AutomatedTellerMachine.Migrations;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -26,6 +27,12 @@ namespace AutomatedTellerMachine.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
         }
 
         public IDbSet<CheckingAccount> CheckingAccounts { get; set; }

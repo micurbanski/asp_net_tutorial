@@ -14,6 +14,7 @@ namespace AutomatedTellerMachine.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "AutomatedTellerMachine.Models.ApplicationDbContext";
         }
 
@@ -48,16 +49,16 @@ namespace AutomatedTellerMachine.Migrations
                 userManager.AddToRole(user.Id, "Admin");
             }
 
-            context.Transactions.Add(new Transaction { Amount = 750, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = -20, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = 50, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = -1.25m, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = 0.99m, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = -15.01m, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = 100, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = -600, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = 300, CheckingAccountId = 5 });
-            context.Transactions.Add(new Transaction { Amount = -75, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = 750, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = -20, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = 50, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = -1.25m, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = 0.99m, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = -15.01m, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = 100, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = -600, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = 300, CheckingAccountId = 5 });
+            //context.Transactions.Add(new Transaction { Amount = -75, CheckingAccountId = 5 });
         }
     }
 }
