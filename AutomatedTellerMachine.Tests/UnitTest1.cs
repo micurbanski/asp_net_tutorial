@@ -24,7 +24,7 @@ namespace AutomatedTellerMachine.Tests
         public void ContactFormSaysThanks()
         {
             var homeController = new HomeController();
-            var result = homeController.Contact("I love your bank") as ViewResult;
+            var result = homeController.Contact("I love your bank") as PartialViewResult;
             Assert.IsNotNull(result.ViewBag.TheMessage);
         }
 
