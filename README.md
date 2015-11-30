@@ -9,4 +9,5 @@ Tutorial application for Automated Teller Machine created with ASP.NET MVC5, bas
 ### Features
 - Facebook Login
 - Knockout JS form validation
+- JS Pagination
 - Twitter Bootstrap
